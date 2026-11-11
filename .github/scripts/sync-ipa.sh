@@ -5,12 +5,8 @@ REPO="${GITHUB_REPOSITORY:-LuomingXu/ipa}"
 TAG="${RELEASE_TAG:-latest}"
 DRY_RUN="${DRY_RUN:-0}"
 
-UPSTREAMS=(
-  Starfallan/PiliNara
-  Lingyan000/fluxdo
-  LiveContainer/LiveContainer
-  CyrilPeng/Venera-Next
-)
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+mapfile -t UPSTREAMS < <(grep -v '^[[:space:]]*$' "$script_dir/../upstreams.txt")
 
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
@@ -124,7 +120,8 @@ for name in "${uploads[@]}"; do
   run gh release upload "$TAG" "$work/dl/$name" --repo "$REPO" --clobber
 done
 
-if ! cmp -s "$work/body.md" "$work/current-body.md"; then
+# $(<file) 会剥掉尾部换行，抵消 gh --jq 输出时补的那个换行
+if [ "$(<"$work/body.md")" != "$(<"$work/current-body.md")" ]; then
   run gh release edit "$TAG" --repo "$REPO" --notes-file "$work/body.md"
 fi
 

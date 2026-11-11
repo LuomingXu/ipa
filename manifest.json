@@ -1,0 +1,51 @@
+{
+  "release": "https://github.com/LuomingXu/ipa/releases/tag/latest",
+  "release_updated": "2026-11-11T09:25:23Z",
+  "apps": [
+    {
+      "name": "PiliNara_ios_2.2.0+6231.ipa",
+      "repo": "Starfallan/PiliNara",
+      "tag": "2.6.2",
+      "size": 26646283,
+      "sha256": "9641a3a86d4f5b7ffe2e7d3b5fc69327509ae9fc757544419ec8acfabfcb9dcc",
+      "published": "2026-11-09",
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/PiliNara_ios_2.2.0+6231.ipa"
+    },
+    {
+      "name": "fluxdo-unsigned.ipa",
+      "repo": "Lingyan000/fluxdo",
+      "tag": "v0.2.29",
+      "size": 55505719,
+      "sha256": "42b9d79348edc422adc206f3ff9619ffc7db1e0d3c044ff48f79e3910e752d4b",
+      "published": "2026-10-20",
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/fluxdo-unsigned.ipa"
+    },
+    {
+      "name": "LiveContainer+SideStore.ipa",
+      "repo": "LiveContainer/LiveContainer",
+      "tag": "3.8.0",
+      "size": 35403538,
+      "sha256": "97dc0fd2202fd4460efcab389943b8d5fdbb4988efff76b116b92b84a4662425",
+      "published": "2026-07-17",
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/LiveContainer+SideStore.ipa"
+    },
+    {
+      "name": "LiveContainer.ipa",
+      "repo": "LiveContainer/LiveContainer",
+      "tag": "3.8.0",
+      "size": 4707271,
+      "sha256": "b6fea95e30083382e29ffef88fa1aaa40b5069e1112e5307d490dab04648bba6",
+      "published": "2026-07-17",
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/LiveContainer.ipa"
+    },
+    {
+      "name": "VeneraNext-ios-1.18.3+249.ipa",
+      "repo": "CyrilPeng/Venera-Next",
+      "tag": "v1.18.3",
+      "size": 21467556,
+      "sha256": "50a4bd7f2adda3936f9e5e3d26922c98cb8122e5bcbe1c746fb9bb45b571e091",
+      "published": "2026-11-07",
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/VeneraNext-ios-1.18.3+249.ipa"
+    }
+  ]
+}

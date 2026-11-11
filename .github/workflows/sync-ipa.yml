@@ -23,3 +23,23 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bash .github/scripts/sync-ipa.sh
+
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          python-version: '3.13'
+          enable-cache: false
+
+      - name: Generate manifest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run --no-project .github/scripts/gen-manifest.py
+
+      - name: Commit manifest
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: 更新 IPA 清单"
+            git push || { git pull --rebase origin master && git push; }
+          fi
