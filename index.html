@@ -231,6 +231,10 @@ function render(data) {
     btn.textContent = '下载';
     if (url) {
       btn.href = url;
+      // 下载直链要走两跳 302 才变成 attachment，在当前标签页里导航时
+      // 再点一次会顶掉上一个未完成的导航，浏览器就会提示取消之前的下载
+      btn.target = '_blank';
+      btn.rel = 'noopener';
     } else {
       btn.removeAttribute('href');
       btn.style.opacity = '.5';
