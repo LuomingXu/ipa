@@ -1,6 +1,6 @@
 {
   "release": "https://github.com/LuomingXu/ipa/releases/tag/latest",
-  "release_updated": "2026-11-11T09:25:23Z",
+  "release_updated": "2026-11-11T10:23:30Z",
   "apps": [
     {
       "name": "PiliNara_ios_2.2.0+6231.ipa",
@@ -21,15 +21,6 @@
       "url": "https://github.com/LuomingXu/ipa/releases/latest/download/fluxdo-unsigned.ipa"
     },
     {
-      "name": "LiveContainer+SideStore.ipa",
-      "repo": "LiveContainer/LiveContainer",
-      "tag": "3.8.0",
-      "size": 35403538,
-      "sha256": "97dc0fd2202fd4460efcab389943b8d5fdbb4988efff76b116b92b84a4662425",
-      "published": "2026-07-17",
-      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/LiveContainer+SideStore.ipa"
-    },
-    {
       "name": "LiveContainer.ipa",
       "repo": "LiveContainer/LiveContainer",
       "tag": "3.8.0",
@@ -46,6 +37,15 @@
       "sha256": "50a4bd7f2adda3936f9e5e3d26922c98cb8122e5bcbe1c746fb9bb45b571e091",
       "published": "2026-11-07",
       "url": "https://github.com/LuomingXu/ipa/releases/latest/download/VeneraNext-ios-1.18.3+249.ipa"
+    },
+    {
+      "name": "PureLive-5.6.5-5144-ios-unsigned.ipa",
+      "repo": "wzgrx/PureLive",
+      "tag": "v5.6.5",
+      "size": 54182314,
+      "sha256": "3c6e9fdaca4a05e2d918593211904dd13a6f365234302caac88df82898f9556c",
+      "published": "2026-11-08",
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/PureLive-5.6.5-5144-ios-unsigned.ipa"
     }
   ]
 }
