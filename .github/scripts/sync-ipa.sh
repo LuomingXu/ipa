@@ -6,7 +6,7 @@ TAG="${RELEASE_TAG:-latest}"
 DRY_RUN="${DRY_RUN:-0}"
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-mapfile -t UPSTREAMS < <(grep -v '^[[:space:]]*$' "$script_dir/../upstreams.txt")
+mapfile -t UPSTREAMS < <(grep -vE '^[[:space:]]*(#|$)' "$script_dir/../upstreams.txt")
 
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
@@ -22,27 +22,32 @@ run() {
 declare -A want_digest want_url want_meta have_id have_digest
 order=()
 
-for r in "${UPSTREAMS[@]}"; do
+for line in "${UPSTREAMS[@]}"; do
+  read -r r pattern <<<"$line"
+  pattern="${pattern:-*.ipa}"
   gh api "repos/$r/releases/latest" --jq '
     .tag_name as $tag | .published_at as $pub |
     .assets[] | select(.name | ascii_downcase | endswith(".ipa")) |
     [.name, (.digest // ""), (.size | tostring), .browser_download_url, $tag, $pub] | @tsv
   ' >"$work/up.tsv"
 
-  # 上游没有 ipa 时直接失败，避免把已镜像的文件当成过期文件删掉
-  if [ ! -s "$work/up.tsv" ]; then
-    echo "错误: $r 最新 release 没有 .ipa 资源" >&2
-    exit 1
-  fi
-
+  matched=0
   while IFS=$'\t' read -r name digest size url tag pub; do
     [ -n "$name" ] || continue
+    case "$name" in $pattern) ;; *) continue ;; esac
+    matched=$((matched + 1))
     [ -n "${want_digest[$name]+x}" ] || order+=("$name")
     want_digest[$name]="$digest"
     want_url[$name]="$url"
     want_meta[$name]="$r"$'\t'"$tag"$'\t'"$size"$'\t'"$pub"
     echo "上游 $r $tag -> $name"
   done <"$work/up.tsv"
+
+  # 一个都没匹配上就直接失败，避免把已镜像的文件当成过期文件删掉
+  if [ "$matched" -eq 0 ]; then
+    echo "错误: $r 最新 release 没有匹配 '$pattern' 的 .ipa 资源" >&2
+    exit 1
+  fi
 done
 
 release_exists=0

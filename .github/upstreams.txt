@@ -1,4 +1,6 @@
+# 每行: owner/repo [资产 glob]，省略 glob 时取该 release 全部 *.ipa
 Starfallan/PiliNara
 Lingyan000/fluxdo
-LiveContainer/LiveContainer
+LiveContainer/LiveContainer LiveContainer.ipa
 CyrilPeng/Venera-Next
+wzgrx/PureLive *-ios-unsigned.ipa

@@ -10,6 +10,7 @@ import os
 import sys
 import urllib.error
 import urllib.request
+from fnmatch import fnmatchcase
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -32,26 +33,34 @@ def api_get(path: str, token: str) -> dict:
         return json.load(resp)
 
 
+def read_upstreams() -> list[tuple[str, str]]:
+    entries = []
+    for line in UPSTREAMS_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split(None, 1)
+        entries.append((parts[0], parts[1].strip() if len(parts) > 1 else "*.ipa"))
+    return entries
+
+
 def build(repo: str, tag: str, token: str) -> dict:
-    upstreams = [
-        line.strip()
-        for line in UPSTREAMS_FILE.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
+    upstreams = read_upstreams()
 
     meta = {}
-    for upstream in upstreams:
+    for upstream, pattern in upstreams:
         release = api_get(f"/repos/{upstream}/releases/latest", token)
         for asset in release.get("assets", []):
-            if asset["name"].lower().endswith(".ipa"):
-                meta[asset["name"]] = {
+            name = asset["name"]
+            if name.lower().endswith(".ipa") and fnmatchcase(name, pattern):
+                meta[name] = {
                     "repo": upstream,
                     "tag": release["tag_name"],
                     "published": (release.get("published_at") or "")[:10],
                 }
 
     mirror = api_get(f"/repos/{repo}/releases/tags/{tag}", token)
-    order = {name: i for i, name in enumerate(upstreams)}
+    order = {up: i for i, (up, _) in enumerate(upstreams)}
     apps = []
     # 以镜像里实际存在的 asset 为准，保证页面不会列出下载不到的文件
     for asset in mirror.get("assets", []):
