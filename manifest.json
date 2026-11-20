@@ -1,11 +1,11 @@
 {
   "release": "https://github.com/LuomingXu/ipa/releases/tag/latest",
-  "release_updated": "2026-11-14T01:57:17Z",
+  "release_updated": "2026-11-20T02:49:11Z",
   "apps": [
     {
       "name": "PiliNara_ios_2.2.0+6231.ipa",
       "repo": "Starfallan/PiliNara",
-      "tag": "2.6.2",
+      "tag": "2.2.0",
       "size": 26646283,
       "sha256": "9641a3a86d4f5b7ffe2e7d3b5fc69327509ae9fc757544419ec8acfabfcb9dcc",
       "published": "2026-11-09",
