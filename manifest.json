@@ -1,6 +1,6 @@
 {
   "release": "https://github.com/LuomingXu/ipa/releases/tag/latest",
-  "release_updated": "2026-11-20T02:49:11Z",
+  "release_updated": "2026-11-21T02:58:16Z",
   "apps": [
     {
       "name": "PiliNara_ios_2.2.0+6231.ipa",
@@ -14,10 +14,10 @@
     {
       "name": "fluxdo-unsigned.ipa",
       "repo": "Lingyan000/fluxdo",
-      "tag": "v0.2.30",
-      "size": 41377170,
-      "sha256": "78e62d2208d65de960d2ebfcf4539e1051c9603ad7ea3cd8c9f1ec8a320282d0",
-      "published": "2026-11-13",
+      "tag": "v0.2.31",
+      "size": 42460860,
+      "sha256": "c26cba320605be746817e9502f47f2b4b0ac0ff5a8b5a8c8ec3c4a50b0d68389",
+      "published": "2026-11-20",
       "url": "https://github.com/LuomingXu/ipa/releases/latest/download/fluxdo-unsigned.ipa"
     },
     {
