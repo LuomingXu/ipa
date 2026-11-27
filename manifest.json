@@ -1,6 +1,6 @@
 {
   "release": "https://github.com/LuomingXu/ipa/releases/tag/latest",
-  "release_updated": "2026-11-26T03:55:07Z",
+  "release_updated": "2026-11-27T03:54:51Z",
   "apps": [
     {
       "name": "PiliNara_ios_2.2.0+6231.ipa",
@@ -39,13 +39,13 @@
       "url": "https://github.com/LuomingXu/ipa/releases/latest/download/VeneraNext-ios-1.18.5+254.ipa"
     },
     {
-      "name": "PureLive-5.7.1-5147-ios-unsigned.ipa",
+      "name": "PureLive-5.7.3-5149-ios-unsigned.ipa",
       "repo": "wzgrx/PureLive",
-      "tag": "v5.7.1",
-      "size": 60484025,
-      "sha256": "556c0c3fe889d2d86c74046acae161535716b0db07e5ea37af3daa33f2e38e65",
+      "tag": "v5.7.3",
+      "size": 60497046,
+      "sha256": "71130ed2df4759fc9c643c5c16038d4f56050b6efb32ada9adcd091b3cc09428",
       "published": "2026-11-26",
-      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/PureLive-5.7.1-5147-ios-unsigned.ipa"
+      "url": "https://github.com/LuomingXu/ipa/releases/latest/download/PureLive-5.7.3-5149-ios-unsigned.ipa"
     }
   ]
 }
